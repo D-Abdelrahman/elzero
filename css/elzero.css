@@ -1,5 +1,7 @@
 /* start glooble rules */
 :root {
+  --main-color: #2196f3;
+  --sec-padding: 80px;
 }
 * {
   box-sizing: border-box;
@@ -36,5 +38,387 @@ ul {
     width: 1170px;
   }
 }
+body {
+  height: 100vh;
+}
 /* end glooble rules */
+/* start components  */
+h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid #000;
+  width: fit-content;
+  margin: 0  auto 80px;
+  position: relative;
+}
+@keyframes coloring {
+  100% {
+    color:#fff;
+    border-color: transparent;
+  }
+}
+h2:hover {
+  animation: coloring forwards 0.2s 0.5s;
+}
+h2::before {
+  content: "";
+  position: absolute;
+  background-color: var(--main-color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -30px;
+  z-index: -1;
+}
+h2:hover::before {
+  animation: fill-to-right forwards linear 0.5s;
+}
+@keyframes fill-to-right {
+  50% {
+    left: 0px;
+      width: 12px;
+  height: 12px;
+  }
+  100% {
+    left: 0px;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+  }
+}
+h2::after {
+  content: "";
+  position: absolute;
+  background-color: var(--main-color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -30px;
+  z-index: -1;
+}
+h2:hover::after {
+  animation: fill-to-left forwards linear 0.5s;
+}
+@keyframes fill-to-left {
+  50% {
+    right: 0px;
+      width: 12px;
+  height: 12px;
+  }
+  100% {
+    right: 0px;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+  }
+}
+/* end components  */
+/* Start Header  */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
+}
+header .logo {
+  color: var(--main-color);
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 25px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  header .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  header .logo {
+    height: 40px;
+  }
+}
+header nav > ul {
+  display: flex;
+}
+header nav > ul li a {
+  transition: 0.3s;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: initial;
+  padding: 0 30px;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  header nav > ul li a {
+    padding: 0 10px;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+header nav > ul li a:hover {
+  background-color: #fcfcfc;
+  color: var(--main-color);
+}
+header nav > ul li a::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: var(--main-color);
+  position: absolute;
+  top: 0;
+  left: -100%;
+  transition: 0.3s;
+}
+header nav > ul li a:hover::before {
+  left: 0;
+}
+header nav > ul li:last-child:hover .minue {
+  z-index: 10;
+  top: calc(100% + 1px);
+}
+header nav .minue {
+  margin-top: 1px;
+  z-index: -10;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: calc(100% + 70px);
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 30px;
+  border-bottom: 4px solid var(--main-color);
+  transition: 0.3s;
+  background-color: #fff;
+}
+@media (max-width: 1199px) {
+  header nav .minue img {
+    width: 300px;
+  }
+}
+@media (max-width: 991px) {
+  header nav .minue img {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  header nav .minue {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+}
+header nav .minue ul {
+  flex: 1;
+}
+@media (max-width: 767px) {
+  header nav .minue ul {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+}
+header nav .minue ul li {
+  padding: 15px;
+  border-bottom: 1px solid #ececec;
+  position: relative;
+  color: var(--main-color);
+}
+header nav .minue ul li:last-child {
+  border: none;
+}
+header nav .minue ul li::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  background-color: #eee;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+}
+header nav .minue ul li:hover::before {
+  width: 100%;
+}
+header nav .minue ul li i {
+  margin-right: 10px;
+}
+/* end  Header  */
+/* Start landign  */
+.landing {
+  height: calc(100vh - 80px);
+  background-color: #ececec;
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+}
+.landing::after {
+  content: "";
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  background-color: #fff;
+  bottom: -260px;
+}
+.landing .content {
+  display: flex;
+  gap: 40px;
+  position: absolute;
+  top: calc(50% - 40px);
+  transform: translateY(-50%);
+}
+@media (max-width: 991px) {
+  .landing .content {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 450px;
+    max-width: calc(100% - 40px);
+    text-align: center;
+  }
+}
+.landing .content h1 {
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .landing .content .text h1 {
+    font-size: 28px;
+  }
+}
+.landing .content p {
+  line-height: 1.7;
+  color: #666;
+  font-size: 22px;
+}
+@media (max-width: 767px) {
+  .landing .content .text p {
+    font-size: 18px;
+  }
+}
+.landing .container img {
+  width: 600px;
+  animation: up-down infinite alternate linear 2s;
+  position: relative;
+  top: 0;
+}
+@media (max-width: 991px) {
+  .landing .content img {
+    display: none;
+  }
+}
+.landing a {
+  position: absolute;
+  color: var(--main-color);
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 35px;
+  /* font-weight: bold; */
+  animation: up-down2 infinite 1.5s;
+}
+/* end  landign */
+/* start animation  */
+@keyframes up-down {
+  100% {
+    top: -50px;
+  }
+}
+@keyframes up-down2 {
+  0% {
+    bottom: 30px;
+  }
+  40% {
+    bottom: 50px;
+  }
+  50% {
+    bottom: 30px;
+  }
+  60% {
+    bottom: 50px;
+  }
+  70% {
+    bottom: 30px;
+  }
+}
+/* end animation  */
+/* start articles  */
+.articles {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+}
+.articles .content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+}
+.articles .content .box {
+  border-radius: 6px;
+  box-shadow: 0 0 10px #eee;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  transition: 0.2s;
+}
+.articles .content .box:hover {
+  box-shadow: 0 0 10px 5px #eee;
+  top: -10px;
+
+}
+.articles .content .box img {
+  max-width: 100%;
+}
+.articles .content .box .text {
+  padding: 20px;
+}
+.articles .content .box h4 {
+  margin: 0 0 15px;
+
+}
+.articles .content .box p {
+  color: #666;
+  line-height: 1.6;
+}
+.articles .content .box a {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  color: var(--main-color);
+  position: relative;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+.articles .content .box i {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  font-size: 15px;
+  transform: translateY(-50%);
+}
+.articles .content .box:hover i {
+  animation: move-to-right 0.6s infinite ;
+
+}
+@keyframes move-to-right {
+  100% {
+    right: 15px;
+  }
+  /* 100% {
+    right: 30px;
+  } */
+}
+/* end articles  */
 
